@@ -1,9 +1,6 @@
 package com.epam.mjc.collections.combined;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class DeveloperProjectFinder {
     public List<String> findDeveloperProject(Map<String, Set<String>> projects, String developer) {
@@ -14,6 +11,16 @@ public class DeveloperProjectFinder {
                 result.add(entry.getKey());
             }
         }
+
+        result.sort(Comparator.comparingInt(String::length));
+        Comparator<String> comparator = (o1, o2) -> {
+            if (o1.length()==o2.length())
+                return o1.compareTo(o2);
+            return 0;
+        };
+        result.sort(comparator);
+        Collections.reverse(result);
+
         return result;
     }
 }

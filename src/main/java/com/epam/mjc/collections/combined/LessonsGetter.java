@@ -9,7 +9,6 @@ public class LessonsGetter {
     public Set<String> getLessons(Map<String, List<String>> timetable) {
         Set<String> result = new HashSet<>();
         for (Map.Entry<String, List<String>> entry : timetable.entrySet()) {
-            System.out.println(entry.getKey() + ":" + entry.getValue());
             result.addAll(entry.getValue());
         }
 
