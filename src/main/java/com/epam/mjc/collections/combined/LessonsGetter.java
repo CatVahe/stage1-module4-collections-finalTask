@@ -8,11 +8,11 @@ import java.util.Set;
 public class LessonsGetter {
     public Set<String> getLessons(Map<String, List<String>> timetable) {
         Set<String> result = new HashSet<>();
-
-        for (String key:
-             timetable.keySet()) {
-            result.addAll(timetable.get(key));
+        for (Map.Entry<String, List<String>> entry : timetable.entrySet()) {
+            System.out.println(entry.getKey() + ":" + entry.getValue());
+            result.addAll(entry.getValue());
         }
+
         return result;
     }
 }

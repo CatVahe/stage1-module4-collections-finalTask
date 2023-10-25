@@ -8,17 +8,17 @@ import java.util.Set;
 public class MapFromKeysCreator {
     public Map<Integer, Set<String>> createMap(Map<String, Integer> sourceMap) {
         Map<Integer, Set<String>> result = new HashMap<>();
-        for (String key :
-                sourceMap.keySet()) {
-            if(result.containsKey(key.length())){
-                Set<String> tmp = result.get(key.length());
-                tmp.add(key);
-                result.put(key.length(), tmp);
+        for (Map.Entry<String, Integer>  entry :
+                sourceMap.entrySet()) {
+
+            Set<String> tmp;
+            if(result.containsKey(entry.getKey().length())){
+                tmp = result.get(entry.getKey().length());
             }else{
-                Set<String> tmp = new HashSet<>();
-                tmp.add(key);
-                result.put(key.length(), tmp);
+                tmp = new HashSet<>();
             }
+            tmp.add(entry.getKey());
+            result.put(entry.getKey().length(), tmp);
 
         }
         return result;
